@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routes: {
         '/': (context) => SplashScreen(
-          // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
+
           child: LoginPage(),
         ),
         '/login': (context) => LoginPage(),
