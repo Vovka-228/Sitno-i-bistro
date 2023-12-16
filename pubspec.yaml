@@ -40,6 +40,11 @@ dependencies:
   firebase_auth: ^4.15.3
   firebase_storage: ^11.5.6
   fluttertoast: ^8.2.4
+  mobile_scanner: ^3.5.5
+  get: ^4.6.5
+  qr_flutter: ^4.1.0
+  qr_scanner_overlay: ^0.0.2
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

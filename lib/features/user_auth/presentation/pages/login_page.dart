@@ -1,7 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-
 import '../../../../global/common/toast.dart';
 import '../../firebase_auth_implementetion/firebase_auth_service.dart';
 import '../widgets/form_container_widget.dart';
@@ -58,7 +57,8 @@ class _LoginPageState extends State<LoginPage> {
           ),
           GestureDetector(
             onTap: () {
-              _signIn();
+               _signIn();
+
             },
             child: Container(
               width: double.infinity,
@@ -105,15 +105,18 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _signIn() async {
+
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
 
     if (user != null) {
+
+
       print("User is successfully SignedIn");
 
-      Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+      Navigator.pushNamedAndRemoveUntil(context, "/navigation", (route) => false);
     } else {
       showToast(message: "Some error occured");
     }

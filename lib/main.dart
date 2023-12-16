@@ -1,3 +1,5 @@
+import 'package:auther/features/user_auth/presentation/pages/qr_scanner_page.dart';
+import 'package:auther/global/common/navigation_menu.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginPage(),
         '/signUp': (context) => SignUpPage(),
         '/home': (context) => HomePage(),
+        '/navigation': (context) => NavigationMenu(),
+        '/qr_scanner': (context) => QrScannerPage(),
       },
     );
   }

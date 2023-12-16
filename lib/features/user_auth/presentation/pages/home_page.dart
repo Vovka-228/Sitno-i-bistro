@@ -12,45 +12,31 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey[300],
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text("HomePage"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-                child: Text(
-              "Welcome Home buddy!",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-            )),
-            SizedBox(
-              height: 30,
+        body: Column(mainAxisAlignment: MainAxisAlignment.end
+          ,children: [Center(
+            child: Container(
+              padding:EdgeInsets.symmetric(horizontal: 20) ,
+              width: double.infinity,
+              child: TextButton(
+                onPressed: (){Navigator.pushNamed(context, "/qr_scanner");},
+                child: Text("Купить продукцию"),
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    backgroundColor: Colors.orange[300],
+                    textStyle: TextStyle(fontSize: 20, color: Colors.white),
+                    padding: EdgeInsets.all(20)),),
             ),
-            GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, "/login", (route) => false);
-              },
-              child: Container(
-                height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    "Sign out",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                ),
-              ),
-            )
+          ),
+            SizedBox(height: 30),
+            
           ],
-        ));
+        )
+    );
   }
 }
+//Navigator.pushNamed(context, "/qr_scanner"
