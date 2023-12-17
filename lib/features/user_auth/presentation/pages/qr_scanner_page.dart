@@ -1,14 +1,17 @@
 import 'dart:typed_data';
-
 import 'package:auther/features/user_auth/presentation/pages/qr_result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:qr_scanner_overlay/qr_scanner_overlay.dart';
 
+import '../../../../data_firebase/data_firebase.dart';
+
 
 const bgColor = Color(0xfffafafa);
+String? code;
 
 class QrScannerPage extends StatefulWidget {
+
   const QrScannerPage({super.key});
 
   @override
@@ -17,10 +20,11 @@ class QrScannerPage extends StatefulWidget {
 
 class _QrScannerPageState extends State<QrScannerPage> {
 
+
   bool isScanCompleted = false;
   bool isFlashOn = false;
   MobileScannerController controller = MobileScannerController();
-
+  final products = Products(name: '', image: '');
 
 
 
@@ -72,24 +76,14 @@ class _QrScannerPageState extends State<QrScannerPage> {
                   final Uint8List? image = capture.image;
 
                   if(!isScanCompleted){
-                    String? code = barcodes[0].rawValue ?? '---';
+                    code = barcodes[0].rawValue ?? '---';
                     debugPrint('Barcode found! ${code}');
                     isScanCompleted = true;
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context)
-                    => QrResultPage(closeScreen: closeScreen, code: code)));
+                    _newRegisterMethod();
                   }
-
-                  // for (final barcode in barcodes) {
-                  //   debugPrint('Barcode found! ${barcode.rawValue}');
-                  // }
               },),
                 QRScannerOverlay(overlayColor: Colors.grey[300], borderColor: Colors.amber,),
-                ElevatedButton(onPressed: (){
-                  String code = '1';
-                  Navigator.push(context, MaterialPageRoute(builder: (context)
-                  => QrResultPage(closeScreen: closeScreen, code: code)));
-                }, child: Text("Click", style: TextStyle(fontSize: 22)))
             ])),
             // Expanded(child: Container(color: Colors.amber,))
             ],
@@ -98,5 +92,12 @@ class _QrScannerPageState extends State<QrScannerPage> {
   }
   void closeScreen(){
     isScanCompleted = false;
+  }
+  void _newRegisterMethod() async {
+    Map listInfoProducts;
+    //List<Object>? listInfoProducts = [];
+    listInfoProducts = (await products.getDataFirebase()) as Map;
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => QrResultPage(closeScreen: closeScreen, FireData: listInfoProducts)));
   }
 }

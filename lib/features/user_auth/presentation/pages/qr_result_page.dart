@@ -1,53 +1,59 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-import 'package:auther/data_firebase/data_firebase.dart';
+
+import '../../firebase_auth_implementetion/parse_modul.dart';
 
 final db = FirebaseFirestore.instance;
+final parsee_modul = ImageRequest();
 
 
-class QrResultPage extends StatelessWidget {
-  final String code;
+class QrResultPage extends StatefulWidget {
+  final Map? FireData;
   final Function() closeScreen;
 
 
 
-  const QrResultPage({super.key, required this.closeScreen, required this.code});
+  QrResultPage({super.key, required this.closeScreen, required this.FireData});
 
   @override
+  State<QrResultPage> createState() => _QrResultPageState();
+}
+
+class _QrResultPageState extends State<QrResultPage> {
+  String? urlImage;
+  //final products = Products();
+  @override
   Widget build(BuildContext context) {
-    final products = Products();
-    String urlImage = (products.image).toString();
+
+
 
     return Scaffold(
         backgroundColor: Colors.grey[300],
       appBar: AppBar(
         leading: IconButton(onPressed: (){
-          closeScreen();
+          widget.closeScreen();
           Navigator.pop(context);
         }, icon: Icon(Icons.arrow_back, color: Colors.white,)),
         title: Text("QR Scanner"),
       ),
 
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Center(child: Image.network("${products.image}"),)],
+      body:
+      // Column(children: [Center(child: ElevatedButton(child: Text("Click"), onPressed: (){products.getDataFirebase();},),)],)
+      Column(children: [Center(child: Column(crossAxisAlignment: CrossAxisAlignment.center,children: [
+        Image.network(widget!.FireData!['image']),
+        SizedBox(height: 10),
+        Text((widget!.FireData!['name'])),
+        SizedBox(height: 10),
+        Text((widget!.FireData!['description'])),
+        SizedBox(height: 10),
+        Text(("Цена: ${widget!.FireData!['price']}"))],))],)
 
-          // children: [ElevatedButton(onPressed: (){
-          //   products.getDataFirebase();
-          // }, child: Text("Click", style: TextStyle(fontSize: 22)))],
-        )
     );
+
+
   }
 
-  // void pol() async {
-  //
-  //   final docRef = db.collection("products").doc("KT7kSOpXOYC9b3JWuEpV");
-  //   docRef.get().then((DocumentSnapshot doc){
-  //     final data = doc.data() as Map <String, dynamic>;
-  //     print(data);
-  //
-  //   },
-  //     onError: (e) => print("Error getting document: $e"),);
-  // }
-}
+
+
+  }
+

@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Welcone Firebase",
+        child: Text("Добро пожаловать в \'Сытно и быстро\'",
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
       ),
     );

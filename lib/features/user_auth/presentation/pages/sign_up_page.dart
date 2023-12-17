@@ -90,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("У тебя уже че есть маза здесь?"),
+              Text("Есть аккаунт?"),
               SizedBox(
                 width: 5,
               ),

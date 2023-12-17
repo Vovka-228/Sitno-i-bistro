@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Нет аккаунта сука?"),
+              Text("Нет аккаунта?"),
               SizedBox(
                 width: 5,
               ),
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       (route) => false);
                 },
                 child: Text(
-                  "Зарегаться",
+                  "Зарегистрироваться",
                   style: TextStyle(
                       color: Colors.blue, fontWeight: FontWeight.bold),
                 ),
