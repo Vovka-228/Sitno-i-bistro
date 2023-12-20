@@ -38,5 +38,6 @@ class _HomePageState extends State<HomePage> {
         )
     );
   }
+
 }
 //Navigator.pushNamed(context, "/qr_scanner"
