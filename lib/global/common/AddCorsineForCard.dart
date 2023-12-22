@@ -1,6 +1,8 @@
 import 'package:auther/global/common/toast.dart';
 import 'package:flutter/material.dart';
 
+import '../functions/CartCounter.dart';
+
 class AddCorsineForCard extends StatefulWidget {
   var FireListt2 = [];
   int index2 = 0;
@@ -21,6 +23,9 @@ class _AddCorsineForCardState extends State<AddCorsineForCard> {
 
   @override
   Widget build(BuildContext context) {
+    // setState(() {
+    //   CountsList.add([widget.index2]);
+    // });
     return Container(
       height: 30,
       child: showCounterButton ? buttonCounter() : buttonPlus(),
@@ -36,6 +41,7 @@ class _AddCorsineForCardState extends State<AddCorsineForCard> {
       onPressed: () {
         setState(() {
           showCounterButton = true;
+          //CartCounterr2 = 1;
         });
       },
       style: ButtonStyle(
@@ -65,10 +71,14 @@ class _AddCorsineForCardState extends State<AddCorsineForCard> {
             onPressed: () {
               setState(() {
                 count--;
+                CartCounterr2--;
+                CountsList.insert(widget.index2, count);
+                plusCartCounter();
                 if (count == 0) {
                   setState(() {
                     showCounterButton = false;
                     count = 1;
+                    CountsList.insert(widget.index2, count);
                   });
                 }
               });
@@ -95,6 +105,13 @@ class _AddCorsineForCardState extends State<AddCorsineForCard> {
               if (count < widget.FireListt2![widget.index2]["count"]) {
                 setState(() {
                   count++;
+                  CartCounterr2++;
+                  CountsList.insert(widget.index2, count);
+                  print("Элемент: ${CountsList[widget.index2]}");
+                  print("Элемент: ${CountsList}");
+                  plusCartCounter();
+                  print("Индекс: ${widget.index2}");
+                  // log(cartCount);
                 });
               } else {
                 showToast(

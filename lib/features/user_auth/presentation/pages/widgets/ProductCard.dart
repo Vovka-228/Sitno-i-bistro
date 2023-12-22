@@ -1,4 +1,3 @@
-import 'package:auther/global/common/AddCorsineForCard.dart';
 import 'package:flutter/material.dart';
 
 Widget ProductCard(var FireListt, context, int index) {
@@ -18,17 +17,14 @@ Widget ProductCard(var FireListt, context, int index) {
               height: 10,
             ),
             SizedBox(
-              height: 35,
+              height: 80,
               child: Text(
                 FireListt[index]['name'],
                 style: TextStyle(fontSize: 15, color: Colors.black87),
-                maxLines: 2,
+                maxLines: 4,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            AddCorsineForCard(FireListt2: FireListt, index2: index)
+            //AddCorsineForCard(FireListt2: FireListt, index2: index)
           ],
         ),
       )

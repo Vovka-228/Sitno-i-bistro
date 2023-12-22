@@ -2,6 +2,7 @@ import 'package:auther/features/user_auth/presentation/pages/widgets/ProductCard
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../global/functions/CartCounter.dart';
 import '../../../../global/functions/NextPageReplace.dart';
 import '../../firebase_auth_implementetion/parse_modul.dart';
 
@@ -32,18 +33,6 @@ class _QrResultPageState extends State<QrResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                widget.closeScreen();
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-              )),
-          title: Text("QR Scanner"),
-        ),
         body: ListView(
           children: [
             Image.network(widget!.FireData!['image']),
@@ -86,11 +75,34 @@ class _QrResultPageState extends State<QrResultPage> {
                         separatorBuilder: (BuildContext context, int index) =>
                             SizedBox(width: 10),
                         itemBuilder: (BuildContext context, int index) {
+                          //CountsList.add([index]);
+
                           return Container(
                               color: Colors.black.withOpacity(0.09),
                               width: MediaQuery.of(context).size.width / 2.7,
                               child: ElevatedButton(
                                   onPressed: () {
+                                    if (count2 != 0) {
+                                      final db = FirebaseFirestore.instance;
+
+                                      final ref =
+                                          db.collection("users").doc("har2");
+
+                                      Map<String, dynamic> map = {
+                                        "count": count2,
+                                        "id": widget.FireData?["id"],
+                                        "price":
+                                            widget.FireData?["price"] * count2,
+                                        "image": widget.FireData?["image"],
+                                        "name": widget.FireData?["name"]
+                                      };
+                                      ref.update({
+                                        "purchases":
+                                            FieldValue.arrayUnion([map])
+                                      });
+                                      countMaps++;
+                                    }
+                                    count2 = 0;
                                     var OtherProduct = functionsNext(
                                         context,
                                         widget!.FireListt[index]["id"]

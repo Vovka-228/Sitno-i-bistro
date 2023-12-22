@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../global/common/toast.dart';
 import '../../firebase_auth_implementetion/firebase_auth_service.dart';
 import '../widgets/form_container_widget.dart';
@@ -122,20 +122,21 @@ class _SignUpPageState extends State<SignUpPage> {
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
     if (user != null) {
-
       final user_request = <String, String>{
         "email": "$email",
-        "name": "",
-        "surname": "",
         "username": "$username",
       };
 
-      db.collection("users").doc(username).set(user_request).onError((e, _) => print("Error writing document: $e"));
-
+      db
+          .collection("users")
+          .doc(username)
+          .set(user_request)
+          .onError((e, _) => print("Error writing document: $e"));
 
       print("User is successfully created");
 
-      Navigator.pushNamedAndRemoveUntil(context, "/navigation", (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, "/navigation", (route) => false);
     } else {
       print("Some error happend");
     }
