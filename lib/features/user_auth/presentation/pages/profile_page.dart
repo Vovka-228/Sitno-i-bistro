@@ -22,9 +22,9 @@ class _ProfilepageState extends State<ProfilePage> {
           children: [
             Center(
                 child: Text(
-                  "Welcome Home buddy!",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-                )),
+              "Профиль",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+            )),
             SizedBox(
               height: 30,
             ),
@@ -38,13 +38,13 @@ class _ProfilepageState extends State<ProfilePage> {
                 height: 45,
                 width: 100,
                 decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.orange[300],
                     borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: Text(
-                    "Sign out",
+                    "Выйти",
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 18),
                   ),

@@ -51,7 +51,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
                   child: Column(
                     children: [
                       Text(
-                        "Place the Qr code in the area",
+                        "Поместите QR код в зону",
                         style: TextStyle(
                           color: Colors.black87,
                           fontSize: 18,
@@ -62,15 +62,15 @@ class _QrScannerPageState extends State<QrScannerPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text("Scanning will be started autue",
+                      Text("Сканирование будет начато немедленно",
                           style:
-                              TextStyle(fontSize: 16, color: Colors.black87)),
-                      ElevatedButton(
-                          onPressed: () {
-                            code = "RhI2gBURg5lGTAmJCNm5"; // УБРАТЬ
-                            _QRPageResultStart();
-                          },
-                          child: Text('Click')),
+                              TextStyle(fontSize: 15, color: Colors.black87)),
+                      // ElevatedButton(
+                      //     onPressed: () {
+                      //       code = "RhI2gBURg5lGTAmJCNm5"; // УБРАТЬ
+                      //       _QRPageResultStart();
+                      //     },
+                      //     child: Text('Click')),
                     ],
                   ),
                 ),

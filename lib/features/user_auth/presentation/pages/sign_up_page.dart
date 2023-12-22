@@ -40,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text("Sign Up",
+          Text("Регистрация",
               style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
           SizedBox(
             height: 30,
@@ -59,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
           SizedBox(height: 10),
           FormContainerWidget(
             controller: _passwordController,
-            hintText: "Password",
+            hintText: "Пароль",
             isPasswordField: true,
           ),
           SizedBox(
@@ -74,12 +74,13 @@ class _SignUpPageState extends State<SignUpPage> {
               width: double.infinity,
               height: 45,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.orange[300]),
               child: Center(
                 child: Text(
-                  "Sign Up",
+                  "Зарегистрироваться",
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

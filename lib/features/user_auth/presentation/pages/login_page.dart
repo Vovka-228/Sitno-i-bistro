@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../global/common/toast.dart';
 import '../../firebase_auth_implementetion/firebase_auth_service.dart';
 import '../widgets/form_container_widget.dart';
@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text("Login",
+          Text("Вход",
               style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold)),
           SizedBox(
             height: 30,
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(height: 10),
           FormContainerWidget(
             controller: _passwordController,
-            hintText: "Password",
+            hintText: "Пароль",
             isPasswordField: true,
           ),
           SizedBox(
@@ -57,19 +57,19 @@ class _LoginPageState extends State<LoginPage> {
           ),
           GestureDetector(
             onTap: () {
-               _signIn();
-
+              _signIn();
             },
             child: Container(
               width: double.infinity,
               height: 45,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.orange[300]),
               child: Center(
                 child: Text(
-                  "Login",
+                  "Войти",
                   style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
+                      color: Colors.black, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -105,18 +105,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _signIn() async {
-
     String email = _emailController.text;
     String password = _passwordController.text;
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
 
     if (user != null) {
-
-
       print("User is successfully SignedIn");
 
-      Navigator.pushNamedAndRemoveUntil(context, "/navigation", (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+          context, "/navigation", (route) => false);
     } else {
       showToast(message: "Some error occured");
     }

@@ -56,13 +56,26 @@ class _QrResultPageState extends State<QrResultPage> {
                 thickness: 1,
                 indent: 10,
                 endIndent: 10),
-            Text((widget!.FireData!['description'])),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text((widget!.FireData!['description'])),
+            ),
             Divider(
                 color: Colors.black.withOpacity(0.3),
                 height: 20,
                 thickness: 1,
                 indent: 10,
                 endIndent: 10),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                "Другие товары на полке:",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
